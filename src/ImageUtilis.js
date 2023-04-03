@@ -33,7 +33,7 @@ export const updateImage = async (imageID, imageData) => {
   }
 }
 
-export const deletePhoto = async (imageID) => {
+export const deleteImage = async (imageID) => {
   try {
     await axios.delete(`${REACT_APP_API}/images/${imageID}`);
     return true;

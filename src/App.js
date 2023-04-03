@@ -1,9 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
-import Image from './BestPics';
-import PhotoForm from './PhotoForm';
-import PhotoUtils from './PhotoUtilis';
-
+import ImageForm from './ImageForm';
+import { fetchedImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
 import './App.css';
 import React, { useState, useEffect } from "react";
 
@@ -12,54 +10,54 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getPhotos = async () => {
-      const fetchedPhotos = await fetchedPhotos();
-      setPhotos(fetchedPhotos);
+    const getImages = async () => {
+      const fetchedImages = await fetchedImages();
+      setImages(fetchedImages);
       setLoading(false);
     }
 
-    getPhotos();
+    getImages();
 
   }, []);
 
 
-  const handleCreatePhoto = async (newPhotoData) => {
-    const createdPhoto = await createdPhoto(newPhotoData);
-    if (createdPhoto) {
-      setPhotos([...photos, createdPhoto]);
+  const handleCreateImage = async (newImageData) => {
+    const createImage = await createImage(newImageData);
+    if (createImage) {
+      setImages([...images, createImage]);
     }
   };
 
-  const handleDeletePhoto = async (photoId) => {
-    const success = await deletePhoto(photoId);
-    if (createdPhoto) {
-      setImages([...photos, createdPhoto]);
+  const handleDeleteImage = async (imageId) => {
+    const success = await deleteImage(imageId);
+    if (createImage) {
+      setImages([...images, createImage]);
     }
   };
 
-  const handleUpdatePhoto = async (photoId, updatedPhotoData) => {
-    const updatedPhoto = await updatedPhoto(photoId, updatedPhotoData);
-    if (updatedPhoto) {
-      const updatedPhotos = photos.map((photo) =>
-        photo.id === photoId ? updatedPhoto : photo
+  const handleUpdateImage = async (imageId, updateImageData) => {
+    const updateImage = await updateImage(imageId, updateImageData);
+    if (updateImage) {
+      const updateImages = images.map((image) =>
+        image.id === imageId ? updateImage : image
       );
-      setPhotos(updatedPhotos);
+      setImages(updateImages);
     }
   };
 
   if (loading) {
-    return <p>Loading photos...</p>
+    return <p>Loading images...</p>
   }
 
   return (
     <div className="container">
-      <h1>My Photo Gallery</h1>
-      <PhotoForm onCreatePhoto={handleCreatePhoto} />
+      <h1>My Image Gallery</h1>
+      <ImageForm onCreateImage={handleCreateImage} />
       <hr />
-      <PhotoList
-        photos={photos}
-        onDeletePhoto={handleDeletePhoto}
-        onUpdatePhoto={handleUpdatePhoto}
+      <ImageForm
+        images={images}
+        onDeleteImage={handleDeleteImage}
+        onUpdateImage={handleUpdateImage}
       />
     </div>
   );
