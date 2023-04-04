@@ -1,25 +1,34 @@
 import React, { useState } from "react";
 
-const ImageForm = ({ onCreateImage }) => {
-  const [title, setTitle] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
 
+const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
+  const [title, setTitle] = useState(currentImage ? currentImage.title : "");
+  const [imgUrl, setImgUrl] = useState(
+    currentImage ? currentImage.imgUrl : ""
+  );
+  const [description, setDescription] = useState(
+    currentImage ? currentImage.description : ""
+  );
+  const [category, setCategory] = useState(
+    currentImage ? currentImage.category : ""
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
     const newImage = {
       title,
-      imgUrl: imgUrl,
+      imgUrl,
       description,
-      category
+      category,
     };
 
-    onCreateImage(newImage);
-    console.log(imgUrl);
+    if (currentImage) {
+      onUpdateImage(currentImage.id, newImage);
+    } else {
+      onCreateImage(newImage);
+    }
+
     setTitle("");
     setImgUrl("");
     setDescription("");
@@ -28,7 +37,7 @@ const ImageForm = ({ onCreateImage }) => {
 
   return (
     <div className="mb-4">
-      <h2>Add a Image</h2>
+      <h2>{currentImage ? "Update" : "Add"} an Image</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="titleInput">Title</label>
@@ -70,18 +79,11 @@ const ImageForm = ({ onCreateImage }) => {
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Add Photo
+          {currentImage ? "Update" : "Add"} Photo
         </button>
       </form>
     </div>
   );
-    
-};    
-
-
-
-
+};
 
 export default ImageForm;
-
-
