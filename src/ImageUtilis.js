@@ -14,11 +14,13 @@ export const fetchImages = async () => {
 }
 
 export const createImage = async (imageData) => {
+  console.log('front-end createImage Data:', imageData);
+  console.log('react API',`${REACT_APP_API}/images`);
   try {
     const response = await axios.post(`${REACT_APP_API}/images`, imageData);
     return response.data;
   } catch (error) {
-    console.error("Issue creating the photo", error);
+    console.error("Issue creating the photo", error.response.data);
     return null;
   }
 }

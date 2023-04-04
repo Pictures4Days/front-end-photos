@@ -13,13 +13,13 @@ const ImageForm = ({ onCreateImage }) => {
 
     const newImage = {
       title,
-      img_url: imgUrl,
+      imgUrl: imgUrl,
       description,
       category
     };
 
     onCreateImage(newImage);
-
+    console.log(imgUrl);
     setTitle("");
     setImgUrl("");
     setDescription("");
@@ -75,6 +75,7 @@ const ImageForm = ({ onCreateImage }) => {
       </form>
     </div>
   );
+    
 };    
 
 
