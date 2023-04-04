@@ -2,7 +2,7 @@ import axios from "axios";
 
 const REACT_APP_API = process.env.REACT_APP_API || "api"
 
-export const fetchedImages = async () => {
+export const fetchImages = async () => {
   try {
     const response = await axios.get(`${REACT_APP_API}/images`);
     return response.data;
@@ -15,7 +15,7 @@ export const fetchedImages = async () => {
 
 export const createImage = async (imageData) => {
   try {
-    const response = await axios.get(`${REACT_APP_API}/images`, imageData);
+    const response = await axios.post(`${REACT_APP_API}/images`, imageData);
     return response.data;
   } catch (error) {
     console.error("Issue creating the photo", error);

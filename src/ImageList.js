@@ -1,22 +1,22 @@
 import React from "react";
-import Photo from "./Photo";
+import Image from "./Image";
 
-const PhotoList = ({ photos }) => {
-  const categories = [...new Set(photos.map((photo) => photo.category))];
+const ImageList = ({ Images }) => {
+  const categories = [...new Set(Images.map((Image) => Image.category))];
 
 
 
   return (
-    <div className="photo-list">
+    <div className="Image-list">
       {categories.map((category) => (
-        <div key={category} className="photo-list-category">
+        <div key={category} className="Image-list-category">
           <h2>{category}</h2>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {photos
-              .filter((photo) => photo.category === category)
-              .map((photo) => (
-                <div key={photo.id} className="col">
-                  <Photo photo={photo} />
+            {Images
+              .filter((Image) => Image.category === category)
+              .map((Image) => (
+                <div key={Image.id} className="col">
+                  <Image Image={Image} />
                 </div>
               ))}
           </div>
@@ -27,7 +27,7 @@ const PhotoList = ({ photos }) => {
 
 };
 
-export default PhotoList;
+export default ImageList;
 
 
 
