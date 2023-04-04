@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PhotoForm = ({ onCreatePhoto }) => {
+const ImageForm = ({ onCreateImage }) => {
   const [title, setTitle] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -18,7 +18,7 @@ const PhotoForm = ({ onCreatePhoto }) => {
       category
     };
 
-    onCreatePhoto(newImage);
+    onCreateImage(newImage);
 
     setTitle("");
     setImgUrl("");
@@ -81,6 +81,6 @@ const PhotoForm = ({ onCreatePhoto }) => {
 
 
 
-export default PhotoForm;
+export default ImageForm;
 
 

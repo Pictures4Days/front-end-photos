@@ -1,9 +1,10 @@
+import React, { useState, useEffect } from "react";
 import Header from './Header';
 import Footer from './Footer';
 import ImageForm from './ImageForm';
-import { fetchedImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
+import { fetchImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
 import './App.css';
-import React, { useState, useEffect } from "react";
+
 
 function App() {
   const [images, setImages] = useState([]);
@@ -11,7 +12,7 @@ function App() {
 
   useEffect(() => {
     const getImages = async () => {
-      const fetchedImages = await fetchedImages();
+      const fetchedImages = await fetchImages();
       setImages(fetchedImages);
       setLoading(false);
     }
@@ -20,28 +21,29 @@ function App() {
 
   }, []);
 
-
   const handleCreateImage = async (newImageData) => {
-    const createImage = await createImage(newImageData);
-    if (createImage) {
-      setImages([...images, createImage]);
+    const createdImage = await createImage(newImageData);
+    if (createdImage) {
+      setImages([...images, createdImage]);
     }
   };
 
   const handleDeleteImage = async (imageId) => {
     const success = await deleteImage(imageId);
-    if (createImage) {
-      setImages([...images, createImage]);
+    if (success) {
+      const updatedImages = images.filter((image) => image.id !== imageId
+      );
+      setImages(updatedImages);
     }
   };
 
   const handleUpdateImage = async (imageId, updateImageData) => {
-    const updateImage = await updateImage(imageId, updateImageData);
-    if (updateImage) {
-      const updateImages = images.map((image) =>
-        image.id === imageId ? updateImage : image
+    const updatedImage = await updateImage(imageId, updateImageData);
+    if (updatedImage) {
+      const updatedImages = images.map((image) =>
+        image.id === imageId ? updatedImage : image
       );
-      setImages(updateImages);
+      setImages(updatedImages);
     }
   };
 
@@ -66,31 +68,5 @@ function App() {
     </div>
   );
 }
-
-
-// render() {
-//   return (
-//     <>
-//       <Router>
-//         <Header />
-//         <Routes>
-//           <Route
-//             path="/"
-//             element={<BestPics />}
-//           >
-//           </Route>
-//           <Route
-//             path="/"
-//             element={<About />}
-//           >
-//           </Route>
-//         </Routes>
-//         <Footer />
-//       </Router>
-
-//     </>
-//   )
-// }
-// }
 
 export default App;
