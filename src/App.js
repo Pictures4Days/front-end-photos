@@ -50,15 +50,19 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>My Image Gallery</h1>
-      <ImageForm onCreateImage={handleCreateImage} />
-      <hr />
-      <ImageForm
-        images={images}
-        onDeleteImage={handleDeleteImage}
-        onUpdateImage={handleUpdateImage}
-      />
+    <div>
+    <Header />
+        <div className="container">
+          <h1>My Image Gallery</h1>
+          <ImageForm onCreateImage={handleCreateImage} />
+          <hr />
+          <ImageForm
+            images={images}
+            onDeleteImage={handleDeleteImage}
+            onUpdateImage={handleUpdateImage}
+          />
+        </div>
+      <Footer />
     </div>
   );
 }

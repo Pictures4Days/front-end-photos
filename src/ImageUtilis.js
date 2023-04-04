@@ -4,7 +4,6 @@ const REACT_APP_API = process.env.REACT_APP_API || "api"
 
 export const fetchedImages = async () => {
   try {
-
     const response = await axios.get(`${REACT_APP_API}/images`);
     return response.data;
 
