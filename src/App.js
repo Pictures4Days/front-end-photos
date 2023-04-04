@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Header from './Header';
-import Footer from './Footer';
-import ImageForm from './ImageForm';
+import Header from "./Header";
+import Footer from "./Footer";
+import ImageForm from "./ImageForm";
 import { fetchImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
-import './App.css';
-
+import ImageList from "./ImageList";
+import "./App.css";
 
 function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [imageToUpdate, setImageToUpdate] = useState(null);
 
   useEffect(() => {
     const getImages = async () => {
       const fetchedImages = await fetchImages();
       setImages(fetchedImages);
       setLoading(false);
-    }
+    };
 
     getImages();
-
   }, []);
 
   const handleCreateImage = async (newImageData) => {
@@ -31,8 +31,7 @@ function App() {
   const handleDeleteImage = async (imageId) => {
     const success = await deleteImage(imageId);
     if (success) {
-      const updatedImages = images.filter((image) => image.id !== imageId
-      );
+      const updatedImages = images.filter((image) => image.id !== imageId);
       setImages(updatedImages);
     }
   };
@@ -44,21 +43,27 @@ function App() {
         image.id === imageId ? updatedImage : image
       );
       setImages(updatedImages);
+      setImageToUpdate(null);
     }
   };
 
-  if (loading) {
-    return <p>Loading images...</p>
-  }
-
   return (
     <div>
-    <Header />
-        <div className="container">
-          <h1>My Image Gallery</h1>
-          <ImageForm onCreateImage={handleCreateImage} />
-          <hr />
-        </div>
+      <Header />
+      <div className="container">
+        <h1>My Image Gallery</h1>
+          <ImageForm
+            currentImage={imageToUpdate}
+            onUpdateImage={handleUpdateImage}
+            onCreateImage={handleCreateImage}
+          />
+        <hr />
+        <ImageList
+          images={images}
+          onDeleteImage={handleDeleteImage}
+          onUpdateImage={setImageToUpdate}
+        />
+      </div>
       <Footer />
     </div>
   );
