@@ -31,22 +31,26 @@ function App() {
   const handleDeleteImage = async (imageId) => {
     const success = await deleteImage(imageId);
     if (success) {
-      const updatedImages = images.filter((image) => image.id !== imageId);
+      const updatedImages = images.filter((image) => image._id !== imageId);
       setImages(updatedImages);
     }
   };
 
   const handleUpdateImage = async (imageId, updateImageData) => {
+    console.log(imageId)
+    console.log(updateImageData)
     const updatedImage = await updateImage(imageId, updateImageData);
     if (updatedImage) {
       const updatedImages = images.map((image) =>
-        image.id === imageId ? updatedImage : image
+        image._id === imageId ? updatedImage : image
       );
       setImages(updatedImages);
       setImageToUpdate(null);
     }
   };
-
+  const imgUpdateHandler = (image) =>{
+    setImageToUpdate(image)
+  } 
   return (
     <div>
       <Header />
@@ -61,7 +65,7 @@ function App() {
         <ImageList
           images={images}
           onDeleteImage={handleDeleteImage}
-          onUpdateImage={setImageToUpdate}
+          onUpdateImage={imgUpdateHandler}
         />
       </div>
       <Footer />

@@ -9,8 +9,8 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   const handleDeleteClick = async () => {
     try {
       setLoading(true);
-      await axios.delete(`${REACT_APP_API}/images/${image.id}`);
-      onDeleteImage(image.id);
+      await axios.delete(`${REACT_APP_API}/images/${image._id}`);
+      onDeleteImage(image._id);
     } catch (error) {
       console.error(error);
     } finally {
@@ -19,7 +19,9 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   };
 
   const handleUpdateClick = () => {
-    onUpdateImage(image.id, image);
+    console.log('image yo',image);
+    //onUpdateImage(image._id, image);
+    onUpdateImage(image);
   };
 
   return (
