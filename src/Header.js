@@ -1,25 +1,43 @@
 import React from 'react';
-
+import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import octocatLogo from './img/Octocat.png';
+import Logo from './img/Logo.png';
 
 function Header() {
   return (
-    <header className="header">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Pictures 4 Days</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">About Us</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <header>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#">
+            <img
+              src={Logo}
+              width="150"
+              height="75"
+              className="d-inline-block align-top"
+              alt="Logo"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarNav" />
+          <Navbar.Collapse id="navbarNav">
+            <Nav className="ms-auto">
+              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="/about">About Us</Nav.Link>
+              <Nav.Link href="https://github.com/CodrCam">
+                <img src={octocatLogo} alt="GitHub" width="40" height="40" />
+                <div>Cam's GitHub</div>
+              </Nav.Link>
+              <Nav.Link href="https://github.com/MalikTorres">
+                <img src={octocatLogo} alt="GitHub" width="40" height="40" />
+                <div>Malik's GitHub</div>
+              </Nav.Link>
+              <Nav.Link href="https://github.com/S-Makeev">
+                <img src={octocatLogo} alt="GitHub" width="40" height="40" />
+                <div>Slava's GitHub</div>
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </header>
   );
 }
