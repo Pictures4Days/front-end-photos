@@ -26,6 +26,8 @@ export const createImage = async (imageData) => {
 }
 
 export const updateImage = async (imageID, imageData) => {
+  console.log(imageID)
+  console.log(imageData)
   try {
     const response = await axios.put(`${REACT_APP_API}/images/${imageID}`, imageData);
     return response.data;

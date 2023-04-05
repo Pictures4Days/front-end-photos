@@ -22,9 +22,10 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
       description,
       category,
     };
-
+    console.log(newImage)
     if (currentImage) {
-      onUpdateImage(currentImage.id, newImage);
+      console.log(currentImage)
+      onUpdateImage(currentImage._id, newImage);
     } else {
       onCreateImage(newImage);
     }

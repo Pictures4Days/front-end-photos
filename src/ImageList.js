@@ -5,7 +5,7 @@ const ImageList = ({ images, onDeleteImage, onUpdateImage }) => {
   const categories = [...new Set(images.map((image) => image.category))];
 
 
-
+  console.log(images)
   return (
     <div className="image-list">
       {categories.map((category) => (
@@ -15,7 +15,7 @@ const ImageList = ({ images, onDeleteImage, onUpdateImage }) => {
             {images
               .filter((image) => image.category === category)
               .map((image) => (
-                <div key={image.id} className="col">
+                <div id={image._id} key={image._id} className="col">
                   <Image image={image}
                   onDeleteImage={onDeleteImage}
                   onUpdateImage={onUpdateImage}
