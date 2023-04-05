@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 import ImageForm from "./ImageForm";
 import { fetchImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
 import ImageList from "./ImageList";
 import "./App.css";
+import Login from "./Login";
 
 function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageToUpdate, setImageToUpdate] = useState(null);
 
-  useEffect(() => {
-    const getImages = async () => {
-      const fetchedImages = await fetchImages();
-      setImages(fetchedImages);
-      setLoading(false);
-    };
+  // useEffect(() => {
+  //   const getImages = async () => {
+  //     const fetchedImages = await fetchImages();
+  //     setImages(fetchedImages);
+  //     setLoading(false);
+  //   };
 
-    getImages();
-  }, []);
+  //   getImages();
+  // }, []);
 
   const handleCreateImage = async (newImageData) => {
     const createdImage = await createImage(newImageData);
@@ -53,7 +52,6 @@ function App() {
   } 
   return (
     <div>
-      <Header />
       <div className="container">
         <h1>My Image Gallery</h1>
           <ImageForm
@@ -68,7 +66,6 @@ function App() {
           onUpdateImage={imgUpdateHandler}
         />
       </div>
-      <Footer />
     </div>
   );
 }
