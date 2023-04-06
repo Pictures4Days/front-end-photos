@@ -48,6 +48,7 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
             id="titleInput"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
+            placeholder="Enter your picture title"
           />
         </div>
         <div className="form-group">
@@ -58,6 +59,7 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
             id="imgUrlInput"
             value={imgUrl}
             onChange={(event) => setImgUrl(event.target.value)}
+            placeholder="Enter the image URL here"
           />
         </div>
         <div className="form-group">
@@ -67,6 +69,7 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
             id="descriptionInput"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
+            placeholder="Enter a description about the picture here"
           ></textarea>
         </div>
         <div className="form-group">
@@ -77,6 +80,7 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
             id="categoryInput"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
+            placeholder="Enter a new category or currently exsisting category"
           />
         </div>
         <button type="submit" className="btn btn-primary">

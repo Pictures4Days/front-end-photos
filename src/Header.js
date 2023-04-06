@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 import octocatLogo from './img/Octocat.png';
 import Logo from './img/Logo.png';
 
