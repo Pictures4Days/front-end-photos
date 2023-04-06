@@ -2,7 +2,7 @@
 
 ## Project Management Tool
 
-Trello
+Slack, and Github
 
 ## Cooperation Plan
 
@@ -12,28 +12,24 @@ Every person on your team is an asset. This is your chance to discover the hidde
 
 * Cam - Solid coding skills
 * Malik - A deep understanding of high-level concepts
-* Ryan - 
 * Slava - Through problem-solving skills
 
 ### Utilizing Strengths in Project Execution
 
 * Cam - Paired coding
 * Malik - Thoughtful discussion of architecture
-* Ryan - 
 * Slava - Perseverance to work at the issues
 
 ### Professional Competencies for Development
 
 * Cam - Communication
 * Malik - Communication
-* Ryan - 
 * Slava - Being a better team member
 
 ### Approach to Day-to-Day Work
 
 * Cam - Morning review of code and dissemination of components
 * Malik - Timely communication with the team
-* Ryan - 
 * Slava - Evening review of code and ticket creation
 
 ### Handling Divergence of Ideas, Execution Tasks, and Duties
@@ -101,3 +97,9 @@ The team will conduct temperature checks on everyone's feelings about the direct
 ### Components on GitHub
 
 The front and backend of our services
+
+### Documentation
+
+![Dataflow](/src/img/Screenshot%202023-03-31%20at%201.52.19%20PM.png)
+
+![DataStuff](/src/img/Screenshot%202023-04-03%20at%208.27.23%20PM.png)
