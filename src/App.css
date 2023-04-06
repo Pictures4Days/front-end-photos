@@ -1,0 +1,36 @@
+html,
+body{
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+}
+.header{
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+  height: 100px;
+  color: coral;
+}
+
+.image-list-category {
+  background: linear-gradient(to right, #ffd7f3, #ff6bfa);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.card{
+  background: linear-gradient(to right, #e6ffff, #95fcfb);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+  margin-top: -100px;
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+}
+
+.footer {
+  height: 50px;
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+  color: cadetblue;
+}
