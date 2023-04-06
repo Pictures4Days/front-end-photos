@@ -9,7 +9,7 @@ function Header() {
     <header>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <img
               src={Logo}
               width="150"
@@ -21,7 +21,7 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <Nav className="ms-auto">
-              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="https://github.com/CodrCam">
                 <img src={octocatLogo} alt="GitHub" width="40" height="40" />
