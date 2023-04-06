@@ -1,10 +1,10 @@
 import axios from "axios";
-
 const REACT_APP_API = process.env.REACT_APP_API || "api"
 
-export const fetchImages = async () => {
+
+export const fetchImages = async (user) => {
   try {
-    const response = await axios.get(`${REACT_APP_API}/images`);
+    const response = await axios.get(`${REACT_APP_API}/images?user=${user}`);
     return response.data;
 
   } catch (error) {
@@ -12,7 +12,20 @@ export const fetchImages = async () => {
     return [];
   }
 }
+// async componentDidMount() {
+//   if (this.props.auth0.isAuthenticated) {
+//     const res = await this.props.auth0.getIdTokenClaims();
 
+//     const jwt = res.__raw;
+
+//     console.log('token: ', jwt);
+
+//     const config = {
+//       headers: { "Authorization": `Bearer ${jwt}` },
+//       method: 'get',
+//       baseURL: process.env.REACT_APP_SERVER,
+//       url: '/books'
+//     }
 export const createImage = async (imageData) => {
   console.log('front-end createImage Data:', imageData);
   console.log('react API',`${REACT_APP_API}/images`);
