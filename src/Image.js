@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useAuth0 } from '@auth0/auth0-react'
+//import { useAuth0 } from '@auth0/auth0-react'
 import { createImage, updateImage } from './ImageUtilis'
 
 const REACT_APP_API = process.env.REACT_APP_API || "api";
@@ -10,25 +10,13 @@ const imageData = createImage.data
 
 const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   const [loading, setLoading] = useState(false);
-  const {isAuthenticated, getIdTokenClaims} = useAuth0();
+ // const { isAuthenticated, getIdTokenClaims } = useAuth0();
   const handleDeleteClick = async () => {
     try {
-      if(isAuthenticated) {
-       const res = await getIdTokenClaims();
-       const jwt = res.__raw;
-       
-       const config = {
-        headers: { "Authorization": `Bearer ${jwt}` },
-        method: 'delete',
-        baseURL: REACT_APP_API,
-        url: `/images/${image._id}`,
-        data: imageData
-      }
-
-       setLoading(true);
-       await axios(config);
-       onDeleteImage(image._id);
-      }
+      let url = `${REACT_APP_API}/images/${image._id}`;
+      setLoading(true);
+      await axios.delete(url);
+      onDeleteImage(image._id);
     } catch (error) {
       console.error(error);
     } finally {
@@ -37,7 +25,7 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   };
 
   const handleUpdateClick = () => {
-    console.log('image yo',image);
+    console.log('image yo', image);
     //onUpdateImage(image._id, image);
     onUpdateImage(image);
   };

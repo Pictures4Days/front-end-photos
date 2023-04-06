@@ -26,7 +26,7 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
       category,
       userEmail,
     };
-    console.log(newImage)
+    console.log("NEW IMAGE IS HERE!",newImage)
     if (currentImage) {
       console.log(currentImage)
       onUpdateImage(currentImage._id, newImage);

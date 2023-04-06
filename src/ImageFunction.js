@@ -3,18 +3,18 @@ import ImageForm from "./ImageForm";
 import { fetchImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
 import ImageList from "./ImageList";
 import "./App.css";
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 function ImageFunction() {
 
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageToUpdate, setImageToUpdate] = useState(null);
+  const { user } = useAuth0();
   
   useEffect(() => {
     const getImages = async () => {
-      
-      const fetchedImages = await fetchImages();
+      const fetchedImages = await fetchImages(user.email);
       setImages(fetchedImages);
       setLoading(false);
    
