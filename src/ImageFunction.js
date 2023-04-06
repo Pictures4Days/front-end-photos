@@ -3,22 +3,25 @@ import ImageForm from "./ImageForm";
 import { fetchImages, createImage, deleteImage, updateImage } from "./ImageUtilis";
 import ImageList from "./ImageList";
 import "./App.css";
-import Login from "./Login";
 
-function App() {
+
+function ImageFunction() {
+
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageToUpdate, setImageToUpdate] = useState(null);
-
-  // useEffect(() => {
-  //   const getImages = async () => {
-  //     const fetchedImages = await fetchImages();
-  //     setImages(fetchedImages);
-  //     setLoading(false);
-  //   };
-
-  //   getImages();
-  // }, []);
+  
+  useEffect(() => {
+    const getImages = async () => {
+      
+      const fetchedImages = await fetchImages();
+      setImages(fetchedImages);
+      setLoading(false);
+   
+    };
+    
+    getImages();
+  }, []);
 
   const handleCreateImage = async (newImageData) => {
     const createdImage = await createImage(newImageData);
@@ -40,6 +43,7 @@ function App() {
     console.log(updateImageData)
     const updatedImage = await updateImage(imageId, updateImageData);
     if (updatedImage) {
+      
       const updatedImages = images.map((image) =>
         image._id === imageId ? updatedImage : image
       );
@@ -70,4 +74,4 @@ function App() {
   );
 }
 
-export default App;
+export default ImageFunction;

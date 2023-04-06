@@ -7,23 +7,34 @@ import Footer from './Footer';
 // import About from './About';
 import Login from './Login';
 import Logout from './Logout';
-
+import Profile from './Profile';
 
 
 class App extends React.Component {
   render() {
     return (
-      <>
+       this.props.auth0.isAuthenticated ? 
+       <>
       <Router>
         <Header />
-        <Login />
+        <Logout />
+        <Profile />
         <Routes>
           <Route path="/" element={< ImageFunction />} />
           {/* <Route path="/about" element={<About />} /> */}
         </Routes>
-        <Logout />
         <Footer />
       </Router>
+      </>
+      :
+      <>
+      <Router>
+        <Header />
+        <Routes>
+        </Routes>
+        <Login/>
+      </Router>
+      <Footer/>
       </>
     );
   }
