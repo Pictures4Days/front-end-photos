@@ -1,16 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useAuth0 } from '@auth0/auth0-react'
 
 const REACT_APP_API = process.env.REACT_APP_API || "api";
 
 const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   const [loading, setLoading] = useState(false);
-
+  const {isAuthenticated, getIdTokenClaims} = useAuth0();
   const handleDeleteClick = async () => {
     try {
-      setLoading(true);
-      await axios.delete(`${REACT_APP_API}/images/${image._id}`);
-      onDeleteImage(image._id);
+      if(isAuthenticated) {
+       const res = await getIdTokenClaims();
+       const jwt = res.__raw;
+       
+       const config = {
+        headers: { "Authorization": `Bearer ${jwt}` },
+        method: 'delete',
+        baseURL: REACT_APP_API,
+        url: `/images/${image._id}`,
+        //data: for put/post
+      }
+
+       setLoading(true);
+       await axios(config);
+       onDeleteImage(image._id);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -49,3 +63,10 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
 };
 
 export default Image;
+
+// if (this.props.auth0.isAuthenticated) {
+//   const res = await this.props.auth0.getIdTokenClaims();
+
+//   const jwt = res.__raw;
+
+//   console.log('token: ', jwt);

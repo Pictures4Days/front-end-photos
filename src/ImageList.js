@@ -4,7 +4,6 @@ import Image from "./Image";
 const ImageList = ({ images, onDeleteImage, onUpdateImage }) => {
   const categories = [...new Set(images.map((image) => image.category))];
 
-
   console.log(images)
   return (
     <div className="image-list">
