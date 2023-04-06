@@ -11,8 +11,8 @@ function Footer() {
           </Col>
           <Col className="text-end">
             <ul className="list-inline">
-              <li className="list-inline-item"><a href="#">Privacy Policy</a></li>
-              <li className="list-inline-item"><a href="#">Terms of Use</a></li>
+              <li className="list-inline-item"><a href="/privacy">Privacy Policy</a></li>
+              <li className="list-inline-item"><a href="/TermsUse">Terms of Use</a></li>
             </ul>
           </Col>
         </Row>

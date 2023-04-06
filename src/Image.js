@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from '@auth0/auth0-react'
+import { createImage, updateImage } from './ImageUtilis'
 
 const REACT_APP_API = process.env.REACT_APP_API || "api";
+
+const imageData = createImage.data
+
 
 const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +22,7 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
         method: 'delete',
         baseURL: REACT_APP_API,
         url: `/images/${image._id}`,
-        //data: for put/post
+        data: imageData
       }
 
        setLoading(true);

@@ -1,8 +1,11 @@
+html,
 body{
   background: linear-gradient(to right, #dbeeff, #6ec0ff);
 }
 .header{
-  background: linear-gradient(to bottom, #dbeeff, #6ec0ff);
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+  height: 100px;
+  color: coral;
 }
 
 .image-list-category {
@@ -17,4 +20,17 @@ body{
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+  margin-top: -100px;
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+}
+
+.footer {
+  height: 50px;
+  background: linear-gradient(to right, #dbeeff, #6ec0ff);
+  color: cadetblue;
 }

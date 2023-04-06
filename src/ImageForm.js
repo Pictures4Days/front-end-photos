@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
+  
   const [title, setTitle] = useState(currentImage ? currentImage.title : "");
   const [imgUrl, setImgUrl] = useState(
     currentImage ? currentImage.imgUrl : ""
@@ -12,15 +14,17 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
   const [category, setCategory] = useState(
     currentImage ? currentImage.category : ""
   );
-
+  
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    let userEmail=user.email;
     const newImage = {
       title,
       imgUrl,
       description,
       category,
+      userEmail,
     };
     console.log(newImage)
     if (currentImage) {
