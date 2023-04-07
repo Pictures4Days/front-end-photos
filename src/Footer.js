@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -11,8 +12,8 @@ function Footer() {
           </Col>
           <Col className="text-end">
             <ul className="list-inline">
-              <li className="list-inline-item"><a href="/privacy">Privacy Policy</a></li>
-              <li className="list-inline-item"><a href="/TermsUse">Terms of Use</a></li>
+            <li className="list-inline-item"><Link to="/privacy">Privacy Policy</Link></li>
+              <li className="list-inline-item"><Link to="/TermsUse">Terms of Use</Link></li>
             </ul>
           </Col>
         </Row>
