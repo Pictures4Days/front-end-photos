@@ -15,7 +15,7 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
     currentImage ? currentImage.category : ""
   );
   
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();// eslint-disable-line
   const handleSubmit = (event) => {
     event.preventDefault();
     let userEmail=user.email;

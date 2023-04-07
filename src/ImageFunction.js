@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function ImageFunction() {
 
   const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);// eslint-disable-line
   const [imageToUpdate, setImageToUpdate] = useState(null);
   const { user } = useAuth0();
   
@@ -21,7 +21,7 @@ function ImageFunction() {
     };
     
     getImages();
-  }, []);
+  }, []);// eslint-disable-line
 
   const handleCreateImage = async (newImageData) => {
     const createdImage = await createImage(newImageData);

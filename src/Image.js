@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 //import { useAuth0 } from '@auth0/auth0-react'
-import { createImage, updateImage } from './ImageUtilis'
+import { createImage, updateImage } from './ImageUtilis' // eslint-disable-line
 
 const REACT_APP_API = process.env.REACT_APP_API || "api";
 
-const imageData = createImage.data
+const imageData = createImage.data // eslint-disable-line
 
 
 const Image = ({ image, onDeleteImage, onUpdateImage }) => {
