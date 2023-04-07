@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Navbar, Nav, NavItem } from 'react-bootstrap';
 import octocatLogo from './img/Octocat.png';
 import Logo from './img/Logo.png';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (

@@ -8,12 +8,11 @@ import About from './About';
 import Login from './Login';
 import Logout from './Logout';
 import Profile from './Profile';
-import Privacy from './Privacy';
-import TermsUse from './TermsUse';
 
 
 class App extends React.Component {
   render() {
+    //console.log(this.props.auth0);
     return (
        this.props.auth0.isAuthenticated ?
        <>
@@ -23,17 +22,19 @@ class App extends React.Component {
         <Profile />
         <Routes>
           <Route path="/" element={< ImageFunction />} />
-          <Route exact path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/termsuse" element={<TermsUse />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </Router>
       </>
       :
       <>
-        <Header />
         <Login/>
+      <Router>
+        <Header />
+       <Routes>
+       </Routes>
+      </Router>
       <Footer/>
       </>
     );
