@@ -21,7 +21,7 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <Nav className="ms-auto">
-              <Nav.Link href="/">Home</Nav.Link>
+              <NavItem><Link to="/">Home</Link></NavItem>
                 
               <NavItem><Link to="/about">About Us</Link></NavItem>
               <Nav.Link href="https://github.com/CodrCam">
