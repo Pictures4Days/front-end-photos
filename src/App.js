@@ -32,12 +32,8 @@ class App extends React.Component {
       </>
       :
       <>
-      <Router>
         <Header />
-        <Routes>
-        </Routes>
         <Login/>
-      </Router>
       <Footer/>
       </>
     );
