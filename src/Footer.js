@@ -12,7 +12,9 @@ function Footer() {
           </Col>
           <Col className="text-end">
             <ul className="list-inline">
-            <li className="list-inline-item"><Link to="/privacy">Privacy Policy</Link></li>
+
+              <li className="list-inline-item"><Link to="/privacy">Privacy Policy</Link></li>
+
               <li className="list-inline-item"><Link to="/TermsUse">Terms of Use</Link></li>
             </ul>
           </Col>

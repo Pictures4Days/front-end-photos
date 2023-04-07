@@ -4,6 +4,7 @@ import octocatLogo from './img/Octocat.png';
 import Logo from './img/Logo.png';
 import { Link } from 'react-router-dom';
 
+
 function Header() {
   return (
     <header>
@@ -21,8 +22,10 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <Nav className="ms-auto">
-            <NavItem><Link to="/">Home</Link></NavItem>
-            <NavItem><Link to="/about">About Us</Link></NavItem>
+
+              <NavItem ><Link to='/'>Home</Link></NavItem>
+              <NavItem ><Link to='/about'>About Us</Link></NavItem>
+
               <Nav.Link href="https://github.com/CodrCam">
                 <img src={octocatLogo} alt="GitHub" width="40" height="40" />
                 <div>Cam's GitHub</div>
