@@ -23,7 +23,7 @@ class App extends React.Component {
         <Profile />
         <Routes>
           <Route path="/" element={< ImageFunction />} />
-          <Route path="/about" element={<About />} />
+          <Route exact path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/termsuse" element={<TermsUse />} />
         </Routes>
