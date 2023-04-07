@@ -8,6 +8,8 @@ import About from './About';
 import Login from './Login';
 import Logout from './Logout';
 import Profile from './Profile';
+import TermsOfUse from './TermsUse';
+import PrivacyPolicy from './Privacy'; 
 
 
 class App extends React.Component {
@@ -23,6 +25,8 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={< ImageFunction />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/TermsUse" element={<TermsUse />} />
         </Routes>
         <Footer />
       </Router>
