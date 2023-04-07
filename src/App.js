@@ -18,7 +18,7 @@ class App extends React.Component {
        <>
       <Router>
         <Header />
-        <Logout />
+       <Logout />
         <Profile />
         <Routes>
           <Route path="/" element={< ImageFunction />} />
@@ -34,8 +34,8 @@ class App extends React.Component {
         <Header />
        <Routes>
        </Routes>
-      </Router>
       <Footer/>
+      </Router>
       </>
     );
   }
