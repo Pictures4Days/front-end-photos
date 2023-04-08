@@ -1,7 +1,7 @@
 import axios from "axios";
 const REACT_APP_API = process.env.REACT_APP_API || "api"
 
-
+// Fetch all images belonging to a user through an axios call to server.js
 export const fetchImages = async (user) => {
   try {
     const response = await axios.get(`${REACT_APP_API}/images?user=${user}`);
@@ -12,20 +12,8 @@ export const fetchImages = async (user) => {
     return [];
   }
 }
-// async componentDidMount() {
-//   if (this.props.auth0.isAuthenticated) {
-//     const res = await this.props.auth0.getIdTokenClaims();
 
-//     const jwt = res.__raw;
-
-//     console.log('token: ', jwt);
-
-//     const config = {
-//       headers: { "Authorization": `Bearer ${jwt}` },
-//       method: 'get',
-//       baseURL: process.env.REACT_APP_SERVER,
-//       url: '/books'
-//     }
+// Create a new image through an axios call to server.js
 export const createImage = async (imageData) => {
   console.log('front-end createImage Data:', imageData);
   console.log('react API',`${REACT_APP_API}/images`);
@@ -38,6 +26,7 @@ export const createImage = async (imageData) => {
   }
 }
 
+// Update an existing image through an axios call to server.js
 export const updateImage = async (imageID, imageData) => {
   console.log(imageID)
   console.log(imageData)
@@ -49,6 +38,7 @@ export const updateImage = async (imageID, imageData) => {
   }
 }
 
+// Delete an existing image through an axios call to server.js
 export const deleteImage = async (imageID) => {
   try {
     await axios.delete(`${REACT_APP_API}/images/${imageID}`);
