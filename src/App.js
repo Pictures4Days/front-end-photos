@@ -15,6 +15,7 @@ import TermsUse from './TermsUse';
 class App extends React.Component {
   render() {
     return (
+      // If the user is authenticated
       this.props.auth0.isAuthenticated ?
         <>
           <Router>
