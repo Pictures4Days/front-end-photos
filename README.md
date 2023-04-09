@@ -1,4 +1,20 @@
-# Team Agreement
+# Pictures 4 Days
+
+The program is a full-stack web application that allows users to upload and view images. It uses a React front-end with an Express and MongoDB backend.
+
+When a user logs in, they are authenticated using `Auth0` and then can input image information to the server. The images are stored in a MongoDB database and associated with the user who uploaded them.
+
+The data flow starts when a user logs in and navigates to the `ImageFunction` component, which is responsible for fetching and displaying images from the server. The component makes a `GET` request to the server using the `fetchImages` function from `ImageUtilis.js`.
+
+When the server receives the `GET` request, it first verifies that the user is authenticated using the `verifyUser` middleware. It then queries the MongoDB database for all images associated with the user's email address and returns them to the client as a JSON response.
+
+The `ImageFunction` component receives the JSON response and maps over the images to create an array of Image components. Each Image component displays a thumbnail of the image and provides buttons to delete or update the image. When the user clicks the delete or update button, a corresponding HTTP request is sent to the server using the deleteImage or updateImage function from `ImageUtilis.js`.
+
+When the server receives a `DELETE` or `PUT` request, it first verifies that the user is authenticated using the `verifyUser` middleware. It then updates or deletes the image in the MongoDB database and returns a success or error message to the client.
+
+The user can also add new images using the `ImageForm` component, which sends a `POST` request to the server using the createImage function from `ImageUtilis.js`. When the server receives the `POST` request, it verifies that the user is authenticated using the `verifyUser`a middleware and then creates a new image record in the MongoDB database associated with the user's email address.
+
+## Team Agreement
 
 ## Project Management Tool
 

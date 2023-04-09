@@ -15,31 +15,32 @@ import TermsUse from './TermsUse';
 class App extends React.Component {
   render() {
     return (
-       this.props.auth0.isAuthenticated ?
-       <>
-      <Router>
-        <Header />
-        <Logout />
-        <Profile />
-        <Routes>
-          <Route path="/" element={< ImageFunction />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/termsuse" element={<TermsUse />} />
-        </Routes>
-        <Footer />
-      </Router>
-      </>
-      :
-      <>
-      <Router>
-        <Header />
-        <Routes>
-        </Routes>
-        <Login/>
-      </Router>
-      <Footer/>
-      </>
+      // If the user is authenticated
+      this.props.auth0.isAuthenticated ?
+        <>
+          <Router>
+            <Header />
+            <Logout />
+            <Profile />
+            <Routes>
+              <Route path="/" element={< ImageFunction />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/termsuse" element={<TermsUse />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </>
+        :
+        <>
+          <Login />
+          <Router>
+            <Header />
+            <Routes>
+            </Routes>
+            <Footer />
+          </Router>
+        </>
     );
   }
 }

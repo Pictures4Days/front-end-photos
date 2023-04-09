@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
+// Component for creating and updating images
 const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
   
+  // State for image title, image URL, image description, and image category
   const [title, setTitle] = useState(currentImage ? currentImage.title : "");
   const [imgUrl, setImgUrl] = useState(
     currentImage ? currentImage.imgUrl : ""
@@ -14,11 +15,17 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
   const [category, setCategory] = useState(
     currentImage ? currentImage.category : ""
   );
-  
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  // Get user authentication information from Auth0
+  const { user, isAuthenticated, isLoading } = useAuth0();// eslint-disable-line
+
+  // Handle form submission when user clicks "Add Photo" or "Update Photo" button
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Get the current user's email address
     let userEmail=user.email;
+
+    // Create a new image object with the title, image URL, description, category, and user email
     const newImage = {
       title,
       imgUrl,
@@ -27,19 +34,24 @@ const ImageForm = ({ onCreateImage, onUpdateImage, currentImage }) => {
       userEmail,
     };
     console.log("NEW IMAGE IS HERE!",newImage)
+
+    // If we are updating an existing image, call the onUpdateImage function with the image ID and new image data
     if (currentImage) {
       console.log(currentImage)
       onUpdateImage(currentImage._id, newImage);
+    // Else, call the onCreateImage function with the new image data
     } else {
       onCreateImage(newImage);
     }
 
+    // Clear the form fields
     setTitle("");
     setImgUrl("");
     setDescription("");
     setCategory("");
   };
-
+  
+  // Render the image form with input fields for title, image URL, description, and category
   return (
     <div className="mb-4">
       <h2>{currentImage ? "Update" : "Add"} an Image</h2>

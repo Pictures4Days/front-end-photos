@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 //import { useAuth0 } from '@auth0/auth0-react'
-import { createImage, updateImage } from './ImageUtilis'
+import { createImage, updateImage } from './ImageUtilis' // eslint-disable-line
 
 const REACT_APP_API = process.env.REACT_APP_API || "api";
 
-const imageData = createImage.data
+const imageData = createImage.data // eslint-disable-line
 
 
 const Image = ({ image, onDeleteImage, onUpdateImage }) => {
   const [loading, setLoading] = useState(false);
- // const { isAuthenticated, getIdTokenClaims } = useAuth0();
+
+  // handle delete image click
   const handleDeleteClick = async () => {
     try {
       let url = `${REACT_APP_API}/images/${image._id}`;
       setLoading(true);
       await axios.delete(url);
+      // remove the image from the list
       onDeleteImage(image._id);
     } catch (error) {
       console.error(error);
@@ -24,12 +26,12 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
     }
   };
 
+  // handle update image click
   const handleUpdateClick = () => {
-    console.log('image yo', image);
-    //onUpdateImage(image._id, image);
     onUpdateImage(image);
   };
 
+  //card for each image 
   return (
     <div className="card">
       <img className="card-img-top" src={image.imgUrl} alt={image.title} />
@@ -55,10 +57,3 @@ const Image = ({ image, onDeleteImage, onUpdateImage }) => {
 };
 
 export default Image;
-
-// if (this.props.auth0.isAuthenticated) {
-//   const res = await this.props.auth0.getIdTokenClaims();
-
-//   const jwt = res.__raw;
-
-//   console.log('token: ', jwt);

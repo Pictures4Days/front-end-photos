@@ -7,11 +7,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function ImageFunction() {
 
+  // Set the initial state
   const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);// eslint-disable-line
   const [imageToUpdate, setImageToUpdate] = useState(null);
   const { user } = useAuth0();
   
+  // Fetch images on component mount
   useEffect(() => {
     const getImages = async () => {
       const fetchedImages = await fetchImages(user.email);
@@ -21,23 +23,26 @@ function ImageFunction() {
     };
     
     getImages();
-  }, []);
+  }, []);// eslint-disable-line
 
+  // Function to handle creating a new image
   const handleCreateImage = async (newImageData) => {
     const createdImage = await createImage(newImageData);
     if (createdImage) {
-      setImages([...images, createdImage]);
+      setImages([...images, createdImage]);// update the images array with the new image
     }
   };
 
+  // Function to handle deleting an image
   const handleDeleteImage = async (imageId) => {
     const success = await deleteImage(imageId);
     if (success) {
       const updatedImages = images.filter((image) => image._id !== imageId);
-      setImages(updatedImages);
+      setImages(updatedImages);// update the images array by removing the deleted image
     }
   };
 
+  // Function to handle updating an image
   const handleUpdateImage = async (imageId, updateImageData) => {
     console.log(imageId)
     console.log(updateImageData)
@@ -47,13 +52,15 @@ function ImageFunction() {
       const updatedImages = images.map((image) =>
         image._id === imageId ? updatedImage : image
       );
-      setImages(updatedImages);
-      setImageToUpdate(null);
+      setImages(updatedImages);// set the updated images array
+      setImageToUpdate(null);// reset the image to be updated to null
     }
   };
+  // Function to handle updating the image to be edited
   const imgUpdateHandler = (image) =>{
     setImageToUpdate(image)
   } 
+  // Render the component
   return (
     <div>
       <div className="container">
